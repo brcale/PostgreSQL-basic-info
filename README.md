@@ -65,16 +65,16 @@ Start by entering the following on the command line:
 ```sh
 psql
 ```
-And you should see something like this:
-Image
+And you should see something like this: <br /> <br />
+<img width="416" alt="Screenshot at Sep 20 15-27-00" src="https://user-images.githubusercontent.com/50056973/134022392-ecbe6bc8-8d77-4633-8a8b-b9c2d35de89f.png">
 
 That’s the psql command line. We can now enter a command to see what users are installed:
 ```sh
 brunocale=# \du
 ```
-This command executes an SQL query that gets all the users in the database. On my machine, it returns the following:
-Image
-
+This command executes an SQL query that gets all the users in the database. On my machine, it returns the following: <br /> <br />
+<img width="784" alt="Screenshot at Sep 20 15-32-09" src="https://user-images.githubusercontent.com/50056973/134023010-a7c98bcc-2ebf-4cb1-8030-a13f1aea9d23.png">
+<br />
 So when Postgres is installed, it automatically creates a database user that matches your username, so that you can get started right away.
 
 ### 1. Creating a role
@@ -86,7 +86,10 @@ Let's create a new role. The basic syntax for creating a role looks like this:
 CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
 ```
 Where instead of `username` we put the name of the role we want to create and the password goes in the quotes. Like this:
-Image
+<br />
+<br />
+<img width="789" alt="Screenshot at Sep 20 16-14-20" src="https://user-images.githubusercontent.com/50056973/134023705-f6b28f82-99d8-4c8a-98ce-5745be917a17.png">
+<br />
 
 But as you can see the list of attributes is empty, why is that? <br /> <br />
 This is how Postgres securely manages defaults. This user can read any database, table, or row it has permissions for, but nothing else—it cannot create or manage databases and has no admin powers. This is a good thing! It helps keep your database secure.
@@ -95,10 +98,12 @@ Ok, so let's give that role a permission to create a databse. We will do that by
 ```sh
 brunocale=# ALTER ROLE demorole CREATEDB; 
 ```
-And we get this:
-Image
+And we get this: <br /> <br />
+<img width="797" alt="Screenshot at Sep 20 16-20-56" src="https://user-images.githubusercontent.com/50056973/134026772-ca0fdfdb-ca60-4f35-80e4-60824498dc6b.png">
+
 <br />
 If you want to remove/delete that role, just run:
+
 ```sh
 brunocale=# DROP ROLE demorole; 
 ```
@@ -114,15 +119,21 @@ Let's now use our new role that we made (demorole), run this command (not while 
 ```sh
 psql postgres -U demorole
 ```
-You will get something like this:
-Image<br />
+You will get something like this: <br /> <br />
+<img width="658" alt="Screenshot at Sep 20 16-35-31" src="https://user-images.githubusercontent.com/50056973/134026945-a4aa3d52-a5c2-44cb-a331-b0b5ac2c1ea9.png">
+
+<br />
 You’ll notice the prompt is slightly different – the `#` has changed to a `>`. This indicates you’re no longer using a Super User account.
 
-Now let's just run the above command for creating a database.
-Image <br />
+Now let's just run the above command for creating a database. <br /> <br />
+<img width="820" alt="Screenshot at Sep 20 16-39-22" src="https://user-images.githubusercontent.com/50056973/134027088-30609601-477c-4994-b638-c93dac176734.png">
+
+<br />
 You can see that third database is the one we created just now and that it's owner is `demorole`.
 <br /> <br />
+
 Here are some commands that you can be used in psql:
+
 * `\list` -> lists all databases in psql
 * `\connect` -> connect to a specific database
 * `dt` -> list all the tables in the currently connected database
