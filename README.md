@@ -63,7 +63,7 @@ Postgres works pretty hard to make itself usable right out of the box without yo
 
 Start by entering the following on the command line:
 ```sh
-psql
+psql postgres
 ```
 And you should see something like this: <br /> <br />
 <img width="416" alt="Screenshot at Sep 20 15-27-00" src="https://user-images.githubusercontent.com/50056973/134022392-ecbe6bc8-8d77-4633-8a8b-b9c2d35de89f.png">
